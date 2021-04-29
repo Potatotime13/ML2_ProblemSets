@@ -3,14 +3,63 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from pathlib import Path
 import re
 
+
+def assign(x, y, m1_old, m2_old):
+    c1 = [[], []]
+    c2 = [[], []]
+    for j in range(len(x)):
+        dist_m1 = (m1_old[0]-x[j])**2 + (m1_old[1]-y[j])**2
+        dist_m2 = (m2_old[0]-x[j])**2 + (m2_old[1]-y[j])**2
+        if dist_m1 < dist_m2:
+            c1[0].append(x[j])
+            c1[1].append(y[j])
+        else:
+            c2[0].append(x[j])
+            c2[1].append(y[j])
+    return c1, c2
+
+
+def recenter(c1_old, c2_old):
+    m1 = [sum(c1_old[0]) / len(c1_old[0]), sum(c1_old[1]) / len(c1_old[1])]
+    m2 = [sum(c2_old[0]) / len(c2_old[0]), sum(c2_old[1]) / len(c2_old[1])]
+    return m1, m2
+
+
 data = re.split('\n', Path('Data_1_1').read_text())
-data_list = []
+x = []
+y = []
 for d in data:
     tmp = d.split('  ')
-    data_list.append([float(tmp[0]), float(tmp[1])])
+    x.append(float(tmp[0]))
+    y.append(float(tmp[1]))
+min_x = min(x)
+max_x = max(x)
+min_y = min(y)
+max_y = max(y)
+pos_per = np.random.rand(2)
+m1 = [min_x + (max_x - min_x) * pos_per[0], min_y + (max_y - min_y) * pos_per[1]]
+m2 = [min_x + (max_x - min_x) * (1-pos_per[0]), min_y + (max_y - min_y) * (1-pos_per[1])]
+m1_old = m1
+m2_old = m2
 
+for i in range(10):
+    c1, c2 = assign(x, y, m1, m2)
+    m1, m2 = recenter(c1, c2)
+
+
+fig_start, bx = plt.subplots()
+bx.scatter(x, y)
+bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]])
+
+fig_end, ax = plt.subplots()
+ax.scatter(c1[0], c1[1])
+ax.scatter(c2[0], c2[1])
+ax.scatter([m1[0], m2[0]], [m1[1], m2[1]])
+#plt.show()
 st.title('ML2 Problemset 1 Task 1')
-st.line_chart(data)
+st.pyplot(fig_start)
+st.pyplot(fig_end)
