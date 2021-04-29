@@ -45,10 +45,14 @@ m1 = [min_x + (max_x - min_x) * pos_per[0], min_y + (max_y - min_y) * pos_per[1]
 m2 = [min_x + (max_x - min_x) * (1-pos_per[0]), min_y + (max_y - min_y) * (1-pos_per[1])]
 m1_old = m1
 m2_old = m2
-
-for i in range(10):
+count = 0
+while True:
+    count += 1
     c1, c2 = assign(x, y, m1, m2)
+    m1_t, m2_t = m1, m2
     m1, m2 = recenter(c1, c2)
+    if m1 == m1_t and m2 == m2_t:
+        break
 
 
 fig_start, bx = plt.subplots()
@@ -59,6 +63,7 @@ fig_end, ax = plt.subplots()
 ax.scatter(c1[0], c1[1])
 ax.scatter(c2[0], c2[1])
 ax.scatter([m1[0], m2[0]], [m1[1], m2[1]])
+fig_end.suptitle('loops: '+str(count))
 #plt.show()
 st.title('ML2 Problemset 1 Task 1')
 st.pyplot(fig_start)
