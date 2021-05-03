@@ -54,17 +54,19 @@ with st.echo():
         if m1 == m1_t and m2 == m2_t:
             break
 
+c1_c = np.ones(len(c1[0]))
+c2_c = np.zeros(len(c2[0]))
 
 fig_start, bx = plt.subplots()
 bx.scatter(x, y)
-bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]])
+bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]], c=[1, 0])
 
 fig_end, ax = plt.subplots()
-ax.scatter(c1[0], c1[1])
-ax.scatter(c2[0], c2[1])
-ax.scatter([m1[0], m2[0]], [m1[1], m2[1]])
-fig_end.suptitle('loops: '+str(count))
-#plt.show()
-st.title('ML2 Problemset 1 Task 1')
-st.pyplot(fig_start)
-st.pyplot(fig_end)
+ax.scatter(c1[0], c1[1], c=c1_c)
+ax.scatter(c2[0], c2[1], c=c2_c)
+ax.scatter([m1[0], m2[0]], [m1[1], m2[1]], c=[1, 0])
+fig_end.suptitle('loopcount: '+str(count))
+plt.show()
+#st.title('ML2 Problemset 1 Task 1')
+#st.pyplot(fig_start)
+#st.pyplot(fig_end)
