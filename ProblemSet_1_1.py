@@ -22,7 +22,7 @@ def main():
 
 
 def task1():
-    st.title('ML2 Problemset 1 Task 1')
+    st.write('Task 1')
     with st.beta_expander("display code"):
         with st.echo('below'):
             def assign(x, y, m1_old, m2_old):
