@@ -57,10 +57,11 @@ with st.beta_expander("display code"):
                 break
 
 with st.sidebar:
-    st.write('Choose Task')
+    st.write('Task selection')
 
 add_selectbox = st.sidebar.selectbox(
-    ("Task 1", "Task 2")
+    "select task",
+    ("1.1 Clustering", "1.2 Test")
 )
 
 c1_c = np.ones(len(c1[0]))
