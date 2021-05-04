@@ -9,7 +9,7 @@ import re
 
 
 def main():
-    st.title('ML2 Problemset 1 Task 1')
+    st.title('ML2 Problemset 1')
     with st.sidebar:
         st.write('Task selection')
 
@@ -22,6 +22,7 @@ def main():
 
 
 def task1():
+    st.title('ML2 Problemset 1 Task 1')
     with st.beta_expander("display code"):
         with st.echo('below'):
             def assign(x, y, m1_old, m2_old):
