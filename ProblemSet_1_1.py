@@ -14,7 +14,7 @@ def main():
         st.write('Task selection')
 
     c_task = st.sidebar.selectbox(
-        "select task",
+        "",
         ("1.1 Clustering", "1.2 Test")
     )
     if c_task == "1.1 Clustering":
