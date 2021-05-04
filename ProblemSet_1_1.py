@@ -60,8 +60,7 @@ with st.sidebar:
     st.write('Choose Task')
 
 add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone")
+    ("Task 1", "Task 2")
 )
 
 c1_c = np.ones(len(c1[0]))
