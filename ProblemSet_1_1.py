@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import re
 
-with st.echo():
+with st.echo('below'):
     def assign(x, y, m1_old, m2_old):
         c1 = [[], []]
         c2 = [[], []]
@@ -56,6 +56,11 @@ with st.echo():
 
 with st.sidebar:
     st.write('Choose Task')
+
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
 
 c1_c = np.ones(len(c1[0]))
 c2_c = np.zeros(len(c2[0]))
