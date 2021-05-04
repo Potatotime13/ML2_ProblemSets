@@ -78,16 +78,20 @@ def task1():
 
     fig_start, bx = plt.subplots()
 
-    bx.scatter(x, y, c='grey')
-    bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]], c='white')
+    bx.scatter(x, y, c='grey', label='input data')
+    bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]], c='white', label='initial mean')
     bx.grid(color='#2A3459')  # bluish dark grey, but slightly lighter than background
+    bx.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), shadow=True, ncol=3)
+    plt.title('Before K=2 Clustering')
 
     fig_end, ax = plt.subplots()
-    ax.scatter(c1[0], c1[1], c='#ff7f0e')
-    ax.scatter(c2[0], c2[1], c='#1f77b4')
-    ax.scatter([m1[0], m2[0]], [m1[1], m2[1]], c='white')
+    ax.scatter(c1[0], c1[1], c='#ff7f0e', label='class 1')
+    ax.scatter(c2[0], c2[1], c='#1f77b4', label='class 2')
+    ax.scatter([m1[0], m2[0]], [m1[1], m2[1]], c='white', label='final mean')
     ax.grid(color='#2A3459')  # bluish dark grey, but slightly lighter than background
-    fig_end.suptitle('loopcount: '+str(count))
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), shadow=True, ncol=3)
+    plt.title('After K=2 Clustering')
+    ax.set_xlabel('Amount of clustering steps: '+str(count), labelpad=40)
     #plt.show()
 
     st.pyplot(fig_start)
