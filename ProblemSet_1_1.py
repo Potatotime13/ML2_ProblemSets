@@ -69,14 +69,24 @@ def task1():
                 if m1 == m1_t and m2 == m2_t:
                     break
 
+    plt.style.use("seaborn-dark")
+    for param in ['figure.facecolor', 'axes.facecolor', 'savefig.facecolor']:
+        plt.rcParams[param] = '#212946'  # bluish dark grey
+
+    for param in ['text.color', 'axes.labelcolor', 'xtick.color', 'ytick.color']:
+        plt.rcParams[param] = '0.9'  # very light grey
+
     fig_start, bx = plt.subplots()
+
     bx.scatter(x, y, c='grey')
-    bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]], c='black')
+    bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]], c='white')
+    bx.grid(color='#2A3459')  # bluish dark grey, but slightly lighter than background
 
     fig_end, ax = plt.subplots()
     ax.scatter(c1[0], c1[1], c='#ff7f0e')
     ax.scatter(c2[0], c2[1], c='#1f77b4')
-    ax.scatter([m1[0], m2[0]], [m1[1], m2[1]], c='black')
+    ax.scatter([m1[0], m2[0]], [m1[1], m2[1]], c='white')
+    ax.grid(color='#2A3459')  # bluish dark grey, but slightly lighter than background
     fig_end.suptitle('loopcount: '+str(count))
     #plt.show()
 
