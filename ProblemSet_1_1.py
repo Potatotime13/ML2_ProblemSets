@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 
 st.title('ML2 Problemset 1 Task 1')
-with st.beta_expander("st.expander"):
+with st.beta_expander("display code"):
     with st.echo('below'):
         def assign(x, y, m1_old, m2_old):
             c1 = [[], []]
