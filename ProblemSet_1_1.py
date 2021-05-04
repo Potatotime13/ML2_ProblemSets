@@ -54,16 +54,19 @@ with st.echo():
         if m1 == m1_t and m2 == m2_t:
             break
 
+with st.sidebar:
+    st.write('Choose Task')
+
 c1_c = np.ones(len(c1[0]))
 c2_c = np.zeros(len(c2[0]))
 
 fig_start, bx = plt.subplots()
-bx.scatter(x, y)
+bx.scatter(x, y, c='grey')
 bx.scatter([m1_old[0], m2_old[0]], [m1_old[1], m2_old[1]], c='black')
 
 fig_end, ax = plt.subplots()
-ax.scatter(c1[0], c1[1], c='red')
-ax.scatter(c2[0], c2[1], c='blue')
+ax.scatter(c1[0], c1[1], c='#ff7f0e')
+ax.scatter(c2[0], c2[1], c='#1f77b4')
 ax.scatter([m1[0], m2[0]], [m1[1], m2[1]], c='black')
 fig_end.suptitle('loopcount: '+str(count))
 #plt.show()
